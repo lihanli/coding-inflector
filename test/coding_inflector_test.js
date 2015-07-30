@@ -14,6 +14,10 @@ describe('coding_inflector', function() {
     it('should work on dashcase strings', function() {
       expect(codingInflector.camelize(dashCaseString)).toBe(camelCaseString);
     });
+
+    it("shouldn't change camelcase strings", function() {
+      expect(codingInflector.camelize(camelCaseString)).toBe(camelCaseString);
+    });
   });
 
   describe('#decamelize', function() {
@@ -30,5 +34,9 @@ describe('coding_inflector', function() {
     it('should work on camelcase strings', function() {
       expect(codingInflector.dasherize(camelCaseString)).toBe(dashCaseString);
     });
+
+    it('shouldnt change dashcase strings', function() {
+      expect(codingInflector.dasherize(dashCaseString)).toBe(dashCaseString);
+    })
   });
 });
