@@ -1,42 +1,50 @@
-var expect = require("expect");
-var codingInflector = require('../dist/coding_inflector');
+"use strict";
 
-var snakeCaseString = 'foo_bar';
-var camelCaseString = 'fooBar';
-var dashCaseString = 'foo-bar';
+let expect = require("expect");
+let codingInflector = require('../dist/coding_inflector');
+let _ = require('underscore');
+
+let snakeCaseString = 'foo_bar';
+let camelCaseString = 'fooBar';
+let dashCaseString = 'foo-bar';
+
+let strings = {
+  snakeCase: 'foo_bar',
+  camelCase: 'fooBar',
+  dashCase: 'foo-bar',
+};
+
+let stringValues = _.values(strings);
 
 describe('coding_inflector', function() {
-  describe('#camelize', function() {
-    it('should work on underscore strings', function () {
-      expect(codingInflector.camelize(snakeCaseString)).toBe(camelCaseString);
-    });
+  for (let k in strings) {
+    if (k === 'snakeCase') continue;
 
-    it('should work on dashcase strings', function() {
-      expect(codingInflector.camelize(dashCaseString)).toBe(camelCaseString);
-    });
+    let exampleString = strings[k];
 
-    it("shouldn't change camelcase strings", function() {
-      expect(codingInflector.camelize(camelCaseString)).toBe(camelCaseString);
+    let methodName = (function() {
+      switch(k) {
+        case 'camelCase':
+          return 'camelize';
+        case 'dashCase':
+          return 'dasherize';
+      };
+    })();
+
+    describe(`#${methodName}`, function() {
+      for (let i = 0, len = stringValues.length; i < len; i++) {
+        let string = stringValues[i];
+
+        it(`should convert ${string} to ${exampleString}`, function() {
+          expect(codingInflector[methodName](string)).toBe(exampleString);
+        });
+      }
     });
-  });
+  }
 
   describe('#decamelize', function() {
     it('should convert to snakecase', function() {
       expect(codingInflector.decamelize(camelCaseString)).toBe(snakeCaseString);
     });
-  });
-
-  describe('#dasherize', function() {
-    it('should work on snakecase strings', function() {
-      expect(codingInflector.dasherize(snakeCaseString)).toBe(dashCaseString);
-    });
-
-    it('should work on camelcase strings', function() {
-      expect(codingInflector.dasherize(camelCaseString)).toBe(dashCaseString);
-    });
-
-    it('shouldnt change dashcase strings', function() {
-      expect(codingInflector.dasherize(dashCaseString)).toBe(dashCaseString);
-    })
   });
 });
