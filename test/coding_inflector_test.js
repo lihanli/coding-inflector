@@ -4,10 +4,6 @@ let expect = require("expect");
 let codingInflector = require('../dist/coding_inflector');
 let _ = require('underscore');
 
-let snakeCaseString = 'foo_bar';
-let camelCaseString = 'fooBar';
-let dashCaseString = 'foo-bar';
-
 let strings = {
   snakeCase: 'foo_bar',
   camelCase: 'fooBar',
