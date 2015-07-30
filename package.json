@@ -1,0 +1,7 @@
+{
+  "name": "coding-inflector",
+  "devDependencies": {
+    "mocha": "2.2.5",
+    "expect": "1.8.0"
+  }
+}
