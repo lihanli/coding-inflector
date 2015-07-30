@@ -1,4 +1,6 @@
 (function() {
+  'use strict';
+
   var STRING_UNDERSCORE_REGEXP_1 = (/([a-z\d])([A-Z]+)/g);
   var STRING_UNDERSCORE_REGEXP_2 = (/\-|\s+/g);
   var STRING_DASHERIZE_REGEXP = (/[ _]/g);
@@ -14,6 +16,10 @@
 
     decamelize: function(str) {
       return str.replace(STRING_DECAMELIZE_REGEXP, "$1_$2").toLowerCase();
+    },
+
+    underscore: function(str) {
+      return str.replace(STRING_UNDERSCORE_REGEXP_1, "$1_$2").replace(STRING_UNDERSCORE_REGEXP_2, "_").toLowerCase();
     },
 
     dasherize: function(str) {

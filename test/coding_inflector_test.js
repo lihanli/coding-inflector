@@ -18,16 +18,15 @@ let stringValues = _.values(strings);
 
 describe('coding_inflector', function() {
   for (let k in strings) {
-    if (k === 'snakeCase') continue;
-
     let exampleString = strings[k];
-
     let methodName = (function() {
       switch(k) {
         case 'camelCase':
           return 'camelize';
         case 'dashCase':
           return 'dasherize';
+        case 'snakeCase':
+          return 'underscore';
       };
     })();
 
@@ -41,10 +40,4 @@ describe('coding_inflector', function() {
       }
     });
   }
-
-  describe('#decamelize', function() {
-    it('should convert to snakecase', function() {
-      expect(codingInflector.decamelize(camelCaseString)).toBe(snakeCaseString);
-    });
-  });
 });
