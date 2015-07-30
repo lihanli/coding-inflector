@@ -12,7 +12,7 @@ let strings = {
 
 let stringValues = _.values(strings);
 
-describe('coding_inflector', function() {
+describe('codingInflector', function() {
   for (let k in strings) {
     let exampleString = strings[k];
     let methodName = (function() {
