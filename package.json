@@ -1,5 +1,15 @@
 {
   "name": "coding-inflector",
+  "version": "0.0.1",
+  "description": "functions for changing between coding cases(camelcase, snakecase, dashcase)",
+  "keywords": ["inflector"],
+  "homepage": "https://github.com/lihanli/coding-inflector",
+  "license" : "MIT",
+  "author": "Lihan Li <frankieteardrop@gmail.com>",
+  "main": "dist/coding_inflector.js",
+  "files": [
+    "dist/coding_inflector.js"
+  ],
   "devDependencies": {
     "expect": "1.8.0",
     "mocha": "2.2.5",
