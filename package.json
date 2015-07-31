@@ -1,7 +1,7 @@
 {
   "name": "coding-inflector",
   "version": "0.0.1",
-  "description": "functions for changing between coding cases(camelcase, snakecase, dashcase)",
+  "description": "functions for changing between coding cases (camelcase, snakecase, dashcase)",
   "keywords": ["inflector"],
   "homepage": "https://github.com/lihanli/coding-inflector",
   "license" : "MIT",
