@@ -1,21 +1,21 @@
-"use strict";
+'use strict';
 
-let expect = require("expect");
-let codingInflector = require('../dist/coding_inflector');
-let _ = require('underscore');
+const expect = require("expect");
+const codingInflector = require('../dist/coding_inflector');
+const _ = require('underscore');
 
-let strings = {
+const strings = {
   snakeCase: 'foo_bar',
   camelCase: 'fooBar',
   dashCase: 'foo-bar',
 };
 
-let stringValues = _.values(strings);
+const stringValues = _.values(strings);
 
 describe('codingInflector', function() {
-  for (let k in strings) {
-    let exampleString = strings[k];
-    let methodName = (function() {
+  for (const k in strings) {
+    const exampleString = strings[k];
+    const methodName = (function() {
       switch(k) {
         case 'camelCase':
           return 'camelize';
@@ -28,7 +28,7 @@ describe('codingInflector', function() {
 
     describe(`#${methodName}`, function() {
       for (let i = 0, len = stringValues.length; i < len; i++) {
-        let string = stringValues[i];
+        const string = stringValues[i];
 
         it(`should convert ${string} to ${exampleString}`, function() {
           expect(codingInflector[methodName](string)).toBe(exampleString);
